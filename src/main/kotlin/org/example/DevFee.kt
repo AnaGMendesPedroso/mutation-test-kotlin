@@ -1,6 +1,6 @@
 package org.example
 
-class Fee {
+class DevFee {
     val maximumIncrease: Double = 12.0
 
     val mediumIncrease: Double = 6.0

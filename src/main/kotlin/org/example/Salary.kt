@@ -3,8 +3,7 @@ package org.example
 import kotlin.math.round
 
 class Salary(
-    private var fee: Fee,
-    private var baseSalary: Double,
+    private var worker: Worker,
     private var periodWorked: Int
 ) {
     private companion object {
@@ -14,22 +13,37 @@ class Salary(
 
         const val MIDDLE_PERIOD: Int = 15
     }
-
-    private var salaryWithIncrease: Double = this.baseSalary
+    private var salaryWithIncrease: Double = this.worker.baseSalary
+    private val qaFee: QAFee = QAFee()
+    private val devFee: DevFee = DevFee()
 
     fun applyIncreaseByPeriod() {
-        if (this.periodWorked >= LONG_PERIOD) {
-            this.salaryWithIncrease += this.calculateIncreaseAmount(this.baseSalary, this.fee.maximumIncrease)
+        if (this.periodWorked >= LONG_PERIOD && this.worker.role == "DEV") {
+            this.salaryWithIncrease += this.calculateIncreaseAmount(this.worker.baseSalary, this.devFee.maximumIncrease)
             return
         }
 
-        if (this.periodWorked >= MIDDLE_PERIOD) {
-            this.salaryWithIncrease += this.calculateIncreaseAmount(this.baseSalary, this.fee.mediumIncrease)
+        if (this.periodWorked >= LONG_PERIOD && this.worker.role == "QA") {
+            this.salaryWithIncrease += this.calculateIncreaseAmount(this.worker.baseSalary, this.qaFee.maximumIncrease)
             return
         }
 
-        if (this.periodWorked >= SHORT_PERIOD) {
-            this.salaryWithIncrease += this.calculateIncreaseAmount(this.baseSalary, this.fee.minimumIncrease)
+        if (this.periodWorked >= MIDDLE_PERIOD && this.worker.role == "DEV") {
+            this.salaryWithIncrease += this.calculateIncreaseAmount(this.worker.baseSalary, this.devFee.mediumIncrease)
+            return
+        }
+
+        if (this.periodWorked >= MIDDLE_PERIOD && this.worker.role == "QA") {
+            this.salaryWithIncrease += this.calculateIncreaseAmount(this.worker.baseSalary, this.qaFee.mediumIncrease)
+            return
+        }
+
+        if (this.periodWorked >= SHORT_PERIOD && this.worker.role == "DEV") {
+            this.salaryWithIncrease += this.calculateIncreaseAmount(this.worker.baseSalary, this.devFee.minimumIncrease)
+        }
+
+        if (this.periodWorked >= SHORT_PERIOD && this.worker.role == "QA") {
+            this.salaryWithIncrease += this.calculateIncreaseAmount(this.worker.baseSalary, this.qaFee.minimumIncrease)
         }
     }
 

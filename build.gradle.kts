@@ -48,6 +48,7 @@ plugins.withId("info.solidsoft.pitest") {
     configure<PitestPluginExtension> {
         verbose.set(false)
         testPlugin.set("junit5")
+        mutators.set(setOf("STRONGER"))
         outputFormats.set(setOf("HTML"))
     }
 }
