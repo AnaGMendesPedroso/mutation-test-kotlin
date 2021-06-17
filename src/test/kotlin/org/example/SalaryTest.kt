@@ -44,4 +44,31 @@ class SalaryTest {
 
         assertEquals(BASE_SALARY_QA, actual)
     }
+
+//    @Test
+//    fun `Salary Increase QA When Period Worked Is Long`() {
+//        val salary = Salary(WorkerQA(BASE_SALARY_QA), 25)
+//        salary.applyIncreaseByPeriod()
+//        val actual = salary.getSalaryWithIncrease()
+//
+//        assertEquals(7200.0, actual)
+//    }
+//
+//    @Test
+//    fun `Salary Increase DEV When Period Worked Is Medium`() {
+//        val salary = Salary(WorkerDev(BASE_SALARY_DEV), 15)
+//        salary.applyIncreaseByPeriod()
+//        val actual = salary.getSalaryWithIncrease()
+//
+//        assertEquals(5300.0, actual)
+//    }
+//
+//    @Test
+//    fun `Salary Increase QA When Period Worked Is Short`() {
+//        val salary = Salary(WorkerQA(BASE_SALARY_QA), 5)
+//        salary.applyIncreaseByPeriod()
+//        val actual = salary.getSalaryWithIncrease()
+//
+//        assertEquals(6300.0, actual)
+//    }
 }

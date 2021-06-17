@@ -5,9 +5,9 @@ ARG DIR='./build.gradle ./settings.gradle ./bin ./share'
 RUN chmod +x ${DIR} \
     && rm -rf ${DIR}
 
-COPY ./src ./src
-COPY ./build.gradle.kts ./
-COPY ./settings.gradle.kts ./
+COPY src ./src
+COPY build.gradle.kts ./
+COPY settings.gradle.kts ./
 
 RUN ./gradlew
 

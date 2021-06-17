@@ -4,7 +4,7 @@ services:
   mutation-test-kotlin:
     build:
       target: dev
-      context: ../mutation-test-kotlin
+      context: ""
       dockerfile: Dockerfile
     container_name: mutation_test_kotlin
     ports:
